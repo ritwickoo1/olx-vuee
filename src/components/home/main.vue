@@ -167,6 +167,25 @@ export default {
          });
          this.getProddata();
        },
+       NextPrevPage(con){
+         if(con == false && this.PageSelected == 1){
+           console.log('non')
+         }
+         if(con == false && this.PageSelected !==1){
+           this.PageSelected = this.PageSelected -1;
+           this.changePage(this.PageSelected);
+           this.PageNation();
+           this.getProddata();
+           console.log('n', this.PageSelected)
+         }
+         if(con == true){
+           this.PageSelected = this.PageSelected + 1;
+           this.changePage(this.PageSelected);
+           this.PageNation();
+           this.getProddata();
+           console.log('n ', this.PageSelected)
+         }
+       },
     }
 }   
 </script>
