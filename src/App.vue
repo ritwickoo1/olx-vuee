@@ -4,15 +4,23 @@
 </template>
 
 <script>
-
+import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'App',
-  components: {
-
+  computed:{
+    ...mapGetters['AllProducts']
+  },
+  created(){
+    console.log('app vue getters',this.AllProducts);
+    this.GetProducts();
+  },
+  methods:{
+    ...mapActions([
+      'GetProducts'
+    ]),
   }
 }
 </script>
-
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
