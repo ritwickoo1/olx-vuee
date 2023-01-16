@@ -21,8 +21,9 @@
          <div class="card-body">
          <h6>Price: ${{ item.price }}</h6>
          
-         <h5 class="card-title vx">{{ item.name }}</h5>
-   
+         <!-- <h5 class="card-title vx">{{ item.name }}</h5> -->
+          <router-link :to="{path:'/Specificitem',query:{ID: item.id}}"
+            tag = "h5" class="card-title vx">{{ item.name }}</router-link>
           
          <button   
          class=" btn btn-danger btn-primary-spacing" >
