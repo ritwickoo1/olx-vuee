@@ -10,11 +10,11 @@
       
    
    
+    <div class="col-md-9">
+ 
     <div class="container">
-      <div class="col-md-3">
-      <!-- <div class="col-m-9" style="padding-left: 150px; "> -->
-     <div class="card h-100 border-0" style="width: 50rem; margin-left: 150px;">
-      <div class="row " >
+      <div class="card-group">
+          <div class="row " >
       <!-- <transition-group name="fade" tag="div" class="row"> -->
        
        
