@@ -10,7 +10,8 @@ const state = {
         { id:'28', name: 'Cat Samsong Watch' ,desc:'samsong Glaxey Watch' , price : '5', imgSrc:'https://freepngimg.com/download/android/73674-gear-watches-samsung-smartwatch-camera-galaxy-smart.png'},
         
     ],
-    non:''
+    // ProdListByPageNum:[],
+    non:'',
 };
 const getters = {
     AllProducts: (state) => state.ProductsList,
@@ -35,6 +36,7 @@ const actions = {
         return itemIndex;
     },
     async GetProdByPageNumber({commit},pageNum){
+        console.log("pn",pageNum)
         const newProdDataArr = [
             { id:'12', name: 'PN Cat i Phone 11 Pro s',  desc:'iphoe 11 pro back',  price : '599',   imgSrc:'https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone11-black-select-2019?wid=940&hei=1112&fmt=png-alpha&qlt=80&.v=1566956144418'},
             { id:'14', name: 'PN Cat Huawei s' ,desc:'Huawei Huawei' , price : '1000', imgSrc:'https://priceintanzania.com/wp-content/uploads/2020/09/Huawei-Enjoy-20-5G.jpg'},
@@ -46,11 +48,14 @@ const actions = {
             { id:'28', name: 'PN Cat Samsong Watch' ,desc:'samsong Glaxey Watch' , price : '5', imgSrc:'https://freepngimg.com/download/android/73674-gear-watches-samsung-smartwatch-camera-galaxy-smart.png'},
 
         ]
+        commit('setProdByPageNumber',newProdDataArr);
     }
 };
 const mutations = {
     setProducts:
     (state, newProdData) => (state.ProductsList = newProdData),
+    setProdByPageNumber:
+    (state, newProdDataArr) => (state.ProductsList= newProdDataArr),
     non:
         (state) => (state.non = '')
 };

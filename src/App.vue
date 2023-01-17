@@ -4,21 +4,16 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
 export default {
   name: 'App',
   computed:{
-    ...mapGetters['AllProducts']
+    // ...mapGetters['AllProducts']
   },
   created(){
-    console.log('app vue getters',this.AllProducts);
-    this.GetProducts();
-  },
-  methods:{
-    ...mapActions([
-      'GetProducts'
-    ]),
+    // console.log('app vue getters',this.AllProducts);
+    // this.GetProducts();
   }
+  
 }
 </script>
 <style>
