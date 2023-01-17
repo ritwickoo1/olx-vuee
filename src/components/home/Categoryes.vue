@@ -17,21 +17,27 @@
   </template>
   
   <script>
-
+    import{mapGetters, mapActions} from 'vuex'
     export default{
       name: 'Categoryes',
       data(){
         return{
-          CategoriesList:[
-            {id:1,name:'phone'},
-            {id:2,name:'shirts'},
-            {id:3,name:'laptops'},
-            {id:4,name:'shoes'},
-            {id:5,name:'watches'},
-          ]
+          CategoriesList:[]
         }
       },
+      computed:{
+        ...mapGetters(['allCategories'])
+      },
+      created(){
+        this.GetCategories();
+      },
+      mounted(){
+        this.CategoriesList = this.allCategories;
+      },
       methods:{
+        ...mapActions([
+          'GetCategories'
+        ]),
         checkCat(cat){
           console.log('cat id',cat)
           this.$emit('CheckCat',cat)
