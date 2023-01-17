@@ -1,6 +1,6 @@
 <template>
-    <div>
-     <div class="card">
+    <div class="container">
+     <div class="card border-0">
       <img class="card-img-top" :src="ResultItems.imgSrc" alt="Card image cap">
        <div class="card-body">
          <h4 class="card-title">{{ResultItems.name}}</h4>

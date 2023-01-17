@@ -6,6 +6,7 @@
        <a href="" class="navbar-brand">The App</a>
     
       <button 
+      v-on:click="isActive = !isActive"
       class="navbar-toggler" 
       type="button" 
       data-toggle="collapse" 
@@ -15,7 +16,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
         
-      <div class="collapse navbar-collapse show" >
+      <div
+      v-bind:class="[isActive? 'collapse navbar-collapse show':'collapse navbar-collapse']" >
     
         <ul class="navbar-nav mr-auto">
         </ul>
@@ -29,9 +31,12 @@
           <button  class='btn btn-outline-danger my-2 my-sm-2 m-2'
           >Logout</button>
     
-       
-         <button  class='btn btn-outline-warning my-2 my-sm-2 m-2'
-          >Cart</button>
+          <router-link to="/Cart"
+          class="btn btn-outline-warning my-2 my-sm-2 m-2"
+          tag="button">Cart</router-link>
+<!--        
+          <button  class='btn btn-outline-warning my-2 my-sm-2 m-2'
+          >Cart</button> -->
     
          <button  class='btn btn-outline-danger my-2 my-sm-2 m-2'
           >Admin</button>
@@ -50,7 +55,12 @@
     <script>
         export default{
             name: 'Header',
-
+            data(){
+                return{
+                    isActive:false,
+                    auth:{isUserLogedIN:false,IsUserAdmin: false}
+                }
+            }
         }
     </script>
     
