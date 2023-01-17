@@ -1,10 +1,14 @@
 <template>
-    <h5>Shopping Cart</h5>
+  <div class="container">
+    <Header />
+    </div>
     <router-view/>
 </template>
 
 <script>
+import Header from './components/header/Header.vue'
 export default {
+  components: {Header},
   name: 'App',
   computed:{
     // ...mapGetters['AllProducts']
@@ -23,6 +27,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>

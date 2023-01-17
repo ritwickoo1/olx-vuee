@@ -6,24 +6,26 @@
     <div class="col-md-2" style="float:left;margin: 1px 2%;">
      <Categoryes v-on:CheckCat="checkTheCat"/>
     </div>
-   <div class="col-md-3"></div>
+   
       
-   <div class="col-md-9">
+   
    
     <div class="container">
-     <div class="card-group">
-     <div class="row">
+      <div class="col-md-3">
+      <!-- <div class="col-m-9" style="padding-left: 150px; "> -->
+     <div class="card h-100 border-0" style="width: 50rem; margin-left: 150px;">
+      <div class="row " >
       <!-- <transition-group name="fade" tag="div" class="row"> -->
        
        
-       <div class="card col-md-4" v-for="(item, index) in items" :key="item.id">
-        <img class="card-img-top" :src="item.imgSrc" alt="Card image cap" >
-         <div class="card-body">
+       <div class="card col-md-4 border-0"  v-for="(item, index) in items" :key="item.id">
+        <img class="card-img-top border-0"  :src="item.imgSrc" alt="Card image cap" >
+         <div class="card-body border-0" >
          <h6>Price: ${{ item.price }}</h6>
          
          <!-- <h5 class="card-title vx">{{ item.name }}</h5> -->
           <router-link :to="{path:'/Specificitem',query:{ID: item.id}}"
-            tag = "h5" class="card-title vx">{{ item.name }}</router-link>
+            tag = "h5" class="card-title vx border-0">{{ item.name }}</router-link>
           
          <button   
          class=" btn btn-danger btn-primary-spacing" >
@@ -52,11 +54,11 @@
    
    <hr>
    <div class="container wid">
-    <div class="row">
+    <div class="row d-flex justify-content-center">
      <nav aria-label="Page navigation  ">
       <ul class="pagination">
        <li class="page-item">
-         <button class="page-link"  v-on:click="NextPrevPage(false)">
+         <button class="page-link "  v-on:click="NextPrevPage(false)">
            <span aria-hidden="true">&laquo;</span>
            <span class="sr-only">Previous</span>
          </button>

@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div class="container" >
   
     <ul class="list-group list-group-flush">
      
