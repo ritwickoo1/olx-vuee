@@ -6,7 +6,9 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import Header from './components/header/Header.vue'
+
 export default {
   components: {Header},
   name: 'App',
@@ -15,7 +17,12 @@ export default {
   },
   created(){
     // console.log('app vue getters',this.AllProducts);
-    // this.GetProducts();
+     this.GetCartItem();
+  },
+  methods:{
+    ...mapActions([
+      'GetCartItem'
+    ])
   }
   
 }

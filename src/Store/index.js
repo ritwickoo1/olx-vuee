@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import App from '../App.vue'
 import Products from './modules/Prdoucts';
 import Categories from './modules/Categories'
+import Cart from './modules/Cart'
 // load vuex
 createApp(App).use(Vuex)
 
@@ -11,6 +12,7 @@ createApp(App).use(Vuex)
 export default new Vuex.Store({
     modules:{
         Products,
-        Categories
+        Categories,
+        Cart
     }
 })
