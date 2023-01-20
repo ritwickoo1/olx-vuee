@@ -4,7 +4,7 @@
         
         <hr>
     <div class="col-md-2" style="float:left;margin: 1px 2%;">
-     <Categoryes v-on:CheckCat="checkTheCat"/>
+     <Categoryes v-on:CheckCat="CheckTheCat"/>
     </div>
    
       
@@ -14,7 +14,7 @@
  
     <div class="container">
       <div class="card-group">
-          <div class="row " >
+          <div class="row " v-if = "isLoaded" >
       <!-- <transition-group name="fade" tag="div" class="row"> -->
        
        
@@ -27,11 +27,13 @@
           <router-link :to="{path:'/Specificitem',query:{ID: item.id}}"
             tag = "h5" class="card-title vx border-0">{{ item.name }}</router-link>
           
-         <button   
+         <button v-if="item.IsInCart"
+         v-on:click="RemoveFromCart(item.id, index)"
          class=" btn btn-danger btn-primary-spacing" >
          <small >Remove From Cart</small> </button>
-         <button
-           class=" btn btn-primary" >
+         <button v-else
+           class=" btn btn-primary" 
+           v-on:click="AddToCart(item.id,index)">
            Add To Cart</button>
        
    
@@ -114,7 +116,8 @@ export default {
             items:[],
             PageArray:[],
             PageSelected:3,
-            CheckedCat:[]
+            CheckedCat:[],
+            isLoaded: true
         }
     },
     components:{
@@ -130,6 +133,7 @@ export default {
       ...mapGetters(['AllProducts'])
     },
     created(){
+     
       //console.log('app vue getters',this.AllProducts);
       this.GetProducts(); 
     },
@@ -152,17 +156,39 @@ export default {
         ...mapActions([
           'GetProducts',
           'GetProdByPageNumber',
-          'CheckIfInCart'
+          'CheckIfInCart',
+          'SetNewCartItem',
+          'RemoveItemFromCart'
         ]),
         getProddata(){
+            this.isLoaded = false;
             let data = [];
             data = this.AllProducts;
             for(let index = 0; index < data.length; index++){
               const EIId = data[index].id;
               this.CheckIfInCart(EIId).then((res)=>{
                 console.log('d',res);
+                let objIndex = data.findIndex((obj => obj.id == EIId));
+                data[objIndex].IsInCart = res;
+                this.isLoaded = true;
               })
             }
+            console.log('data',data);
+            this.items = data;
+        },
+        AddToCart(id,index){
+          this.isLoaded = false;
+          this.items[index].IsInCart = true;
+          this.isLoaded = true;
+          this.SetNewCartItem(id);
+          this.getProddata();
+        },
+        RemoveFromCart(id,index){
+          this.isLoaded = false;
+          this.items[index].IsInCart = false;
+          this.isLoaded = true;
+          this.RemoveItemFromCart(id);
+          this.getProddata();
         },
         PageNation(){
             this.PageArray = [];
@@ -204,7 +230,7 @@ export default {
            console.log('n ', this.PageSelected)
          }
        },
-       checkTheCat(cat){
+       CheckTheCat(cat){
         console.log('cat id', cat);
         if(this.CheckedCat.indexOf(cat)===-1){
           this.CheckedCat.push(cat);

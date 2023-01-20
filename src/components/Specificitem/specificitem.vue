@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-     <div class="card border-0">
+     <div class="card border-0" v-if="isLoad">
       <img class="card-img-top" :src="ResultItems.imgSrc" alt="Card image cap">
        <div class="card-body">
          <h4 class="card-title">{{ResultItems.name}}</h4>
@@ -8,11 +8,13 @@
          <h4> Price : ${{ ResultItems.price }}</h4>
          <h4><i class="fas fa-tags"></i> : {{ ResultItems.CatName }}</h4>
          <a 
-         class="btn btn-primary" v-if="ResultItems.Incart" >
-         Add To Card</a>
+         class="btn btn-primary"
+         v-on:click="ChangeItemStatus"
+           v-if="!ResultItems.Incart" >
+         Add To Cart</a>
         <a 
-         class="btn btn-danger" v-if="!ResultItems.Incart" >
-         Remove From Card</a>
+         class="btn btn-danger" v-on:click="ChangeItemStatus" v-if="ResultItems.Incart" >
+         Remove From Cart</a>
        </div>
       </div>
     
@@ -33,8 +35,9 @@
                         price:null,
                         desc:'',
                         CatName:'',
-                        Incart:true
-                    }
+                        Incart:true,
+                    },
+                    isLoad:Boolean
                 }
             },
             created(){
@@ -44,14 +47,18 @@
                 ...mapActions([
                   'GetProdByID',
                   'GetCatByID',
-                  'GetCategories'
+                  'GetCategories',
+                  'CheckIfInCart',
+                  'SetNewCartItem',
+                  'RemoveItemFromCart'
                 ]),
                 async Getroutedata(){
+                    this.isLoad = false;
                     this.GetCategories();
                     let ProdID = this.$route.query.ID;
                     await this.GetProdByID(ProdID)
                     .then((res)=>{
-                        (console.log('specific item', res))
+                        console.log('specific item', res)
                         this.ResultItems.id = ProdID;
                         this.ResultItems.name = res[0].name;
                         this.ResultItems.imgSrc = res[0].imgSrc;
@@ -61,7 +68,26 @@
                             console.log('res',res)
                             this.ResultItems.CatName = res[0].name;
                         })
-                    })   
+                    }) 
+                    // check if in cart
+                    await this.CheckIfInCart(ProdID).then((res)=>{
+                        this.ResultItems.Incart = res;
+                        console.log('res X',res);
+                        this.isLoad = true;
+                    }) 
+                },
+                async ChangeItemStatus(){
+                    this.isLoad = false;
+                    this.ResultItems.Incart = !this.ResultItems.Incart;
+                    let ProdID = this.$route.query.ID;
+
+                    if(this.ResultItems.Incart){
+                        this.SetNewCartItem(ProdID);
+                        this.isLoad = true;
+                    }else{
+                        this.isLoad = true;
+                        this.RemoveItemFromCart(ProdID)
+                    }
                 }
             }
         }

@@ -20,9 +20,9 @@ const actions = {
     },
     async SetNewCartItem({commit}, ID){
         let defaultQuantity = 1;
-        if(localStorage.getItem('Cart')){
+        if(localStorage.getItem("Cart")){
             let newItem = {id:ID, quantity:defaultQuantity}
-            let CartData = JSON.parse(localStorage.getItem('Cart'));
+            let CartData = JSON.parse(localStorage.getItem("Cart"));
             let ItemData = CartData.findIndex((obj=>obj.id == ID));
             if(ItemData !== -1){
                 let objIndex = CartData.findIndex((obj=>obj.id == ID));
@@ -34,7 +34,7 @@ const actions = {
             }
             commit('SetNew', CartData);
         }else{
-            let newItemDataArr = {id:ID, quantity:defaultQuantity};
+            let newItemDataArr = [{id:ID, quantity:defaultQuantity}];
             localStorage.setItem("Cart",JSON.stringify(newItemDataArr));
             commit('SetNew',newItemDataArr)
         }
@@ -56,7 +56,7 @@ const actions = {
             let CartData = JSON.parse(localStorage.getItem("Cart"));
             let ItemData = CartData.findIndex((obj=>obj.id == ID));
             if(ItemData!==-1){
-                CartData = CartData.filter(x=>{return x.id!==ID})
+                CartData = CartData.filter(x=>{return x.id !== ID})
                 localStorage.setItem("Cart",JSON.stringify(CartData));
                 commit("SetNew",CartData);
             }
@@ -65,7 +65,7 @@ const actions = {
     async CheckIfInCart({commit}, ID){
         if(localStorage.getItem("Cart")){
             let CartData = JSON.parse(localStorage.getItem("Cart"));
-            let ItemData = CartData.findIndex((obj=>obj.id == data.ID));
+            let ItemData = CartData.findIndex((obj=>obj.id == ID));
             let IsInCart;
             if(ItemData !== -1){
                 IsInCart = true;
@@ -82,7 +82,7 @@ const mutations = {
     SetNew:
     (state, CartItems) => (state.OriginalCartListData = CartItems),
     non:
-    (state) => (state.non = "")
+    (state) => (state.non = '')
 }
 
 export default{
