@@ -4,6 +4,7 @@ import App from '../App.vue'
 import Products from './modules/Prdoucts';
 import Categories from './modules/Categories'
 import Cart from './modules/Cart'
+import Authentication from './modules/Authentication'
 // load vuex
 createApp(App).use(Vuex)
 
