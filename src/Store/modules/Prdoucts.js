@@ -8,7 +8,8 @@ const state = {
         { id:'24', CatID:'44',  name: 'Cat nike shose' ,desc:'black nike shose' , price : '50', imgSrc:'https://image.cnbcfm.com/api/v1/image/105680013-1547583426762nike1.jpg?v=1547583682'},
         { id:'26', CatID:'55',  name: 'Cat nikon Camera' ,desc:'nikon camera description' , price : '2400', imgSrc:'https://ih1.redbubble.net/image.479726964.0085/fposter,medium,wall_texture,product,750x1000.jpg'},
         { id:'28', CatID:'66', name: 'Cat Samsong Watch' ,desc:'samsong Glaxey Watch' , price : '5', imgSrc:'https://freepngimg.com/download/android/73674-gear-watches-samsung-smartwatch-camera-galaxy-smart.png'},
-        
+        { id:'30', CatID:'66', name: 'Mintra School Backpacks For Unisex - Light Blue' ,desc:'Brand: MintraType: School School BackpackssColor: Light BlueTargeted Group: Unisex' , price : '33', imgSrc:'https://daf2nnvanl0k4.cloudfront.net/catalog/product/1/_/1_5.png?width=700&height=1000&store=default&image-type=image'},
+
     ],
     // ProdListByPageNum:[],
     non:'',
@@ -27,6 +28,8 @@ const actions = {
             { id:'24', CatID:'44',  name: 'N Cat nike shose' ,desc:'black nike shose' , price : '50', imgSrc:'https://image.cnbcfm.com/api/v1/image/105680013-1547583426762nike1.jpg?v=1547583682'},
             { id:'26', CatID:'55',  name: 'N Cat nikon Camera' ,desc:'nikon camera description' , price : '2400', imgSrc:'https://ih1.redbubble.net/image.479726964.0085/fposter,medium,wall_texture,product,750x1000.jpg'},
             { id:'28', CatID:'66', name: 'N Cat Samsong Watch' ,desc:'samsong Glaxey Watch' , price : '5', imgSrc:'https://freepngimg.com/download/android/73674-gear-watches-samsung-smartwatch-camera-galaxy-smart.png'},
+            { id:'30', CatID:'66', name: 'Mintra School Backpacks For Unisex - Light Blue' ,desc:'Brand: MintraType: School School BackpackssColor: Light BlueTargeted Group: Unisex' , price : '33', imgSrc:'https://daf2nnvanl0k4.cloudfront.net/catalog/product/1/_/1_5.png?width=700&height=1000&store=default&image-type=image'},
+
         ]
         commit('setProducts',newProdData)
     },

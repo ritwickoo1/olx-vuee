@@ -22,7 +22,7 @@ const actions={
             {id:'33', name:'shirts C'},
             {id:'44', name:'shoes C'},
             {id:'55', name:'cameras C'},
-            {id:'66', name:'cars C'}
+            {id:'66', name:'Bag C'}
         ]
         commit('setCategories',newCatdata)
     },

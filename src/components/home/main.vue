@@ -1,6 +1,6 @@
 <template>
     <div>
-        <!-- <Sugproducts /> -->
+        <Sugproducts />
         
         <hr>
     <div class="col-md-2" style="float:left;margin: 1px 2%;">
@@ -109,6 +109,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex';
 import Categoryes from './Categoryes.vue'
+import  Sugproducts from './Sugproducts.vue'
 export default {
     name: "Main",
     data(){
@@ -121,7 +122,8 @@ export default {
         }
     },
     components:{
-      Categoryes
+      Categoryes,
+      Sugproducts
     },
     // filters:{
     //   MaxName:function(value){
@@ -254,7 +256,11 @@ export default {
 }   
 </script>
 
-<style>
+<style scoped>
+.card{
+    width: 10rem;
+    padding:30px;
+  }
 .btn-primary-spacing 
 {
 margin-right: 5px;
