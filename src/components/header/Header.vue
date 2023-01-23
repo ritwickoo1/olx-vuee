@@ -25,8 +25,10 @@
           <!-- search start -->
           <!-- search end -->
     
-          <button  class='btn btn-outline-primary my-2 my-sm-2 m-2'
-          >Login | register</button>
+          <router-link tag="button" to="/LoginRegister"
+          class='btn btn-outline-primary my-2 my-sm-2 m-2'>
+          Login | register
+        </router-link>
     
           <button  class='btn btn-outline-danger my-2 my-sm-2 m-2'
           >Logout</button>
