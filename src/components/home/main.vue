@@ -7,7 +7,8 @@
      <Categoryes v-on:CheckCat="CheckTheCat"/>
     </div>
    
-      
+    <div class="col-md-3"></div>
+
    
    
     <div class="col-md-9">
@@ -71,7 +72,7 @@
          <button :class="PageSelected === page ?
        'page-link active': 'page-link '" 
        v-on:click="changePage(page)"
-       > {{page }}  </button></li>  
+       > {{ page }}  </button></li>  
      
    
        <li class="page-item">
@@ -140,7 +141,9 @@ export default {
       this.GetProducts(); 
     },
     mounted(){
-        if(!this.$route.query.page){
+      
+      if(!this.$route.query.page){
+        console.log(this.$route.query.page)
        this.$router.push({
          path:'/',
          name:'Main',

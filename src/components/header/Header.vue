@@ -42,9 +42,12 @@
     
          <button  class='btn btn-outline-danger my-2 my-sm-2 m-2'
           >Admin</button>
-    
-         <button class='btn btn-outline-dark my-2 my-sm-2 m-2'
-          >Profile</button>
+        
+          <router-link tag="button" to="/UserProfile"
+          class='btn btn-outline-dark my-2 my-sm-2 m-2'>
+          Profile        </router-link>
+        
+        
     
         </form>
       </div>
