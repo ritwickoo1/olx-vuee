@@ -23,6 +23,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
           <!-- search start -->
+          <Search/>
           <!-- search end -->
     
           <router-link tag="button" to="/LoginRegister"
@@ -58,6 +59,7 @@
     </div>
     </template>
     <script>
+      import Search from './Search.vue'
         export default{
             name: 'Header',
             data(){
@@ -65,6 +67,9 @@
                     isActive:false,
                     auth:{isUserLogedIN:false,IsUserAdmin: false}
                 }
+            },
+            components:{
+              Search
             }
         }
     </script>

@@ -4,6 +4,10 @@ import Specificitem from "./components/Specificitem/specificitem.vue"
 import Cart from "./components/Cart/Cart.vue"
 import LoginRegister from "./components/LoginRegister/LoginRegister.vue"
 import UserProfile from "./components/UserProfile/UserProfile.vue"
+import SearchP from "./components/Search/SearchP.vue"
+import AuthGarud from './Garuds/AuthGarud';
+import LoginRegGarud from './Garuds/LoginRegGarud';
+// import AdminGard from './Garuds/AdminGard';
 const routes = [{
         path:'/',
         name:'Main',
@@ -22,12 +26,23 @@ const routes = [{
     {
         path:'/LoginRegister',
         name:'LoginRegister',
-        component:LoginRegister
+        component:LoginRegister,
+        beforeEnter:(to, from, next) => {
+            LoginRegGarud(to, from, next);
+        }
     },
     {
         path:'/UserProfile',
         name:'UserProfile',
-        component:UserProfile
+        component:UserProfile,
+        beforeEnter:(to, from, next) => {
+            AuthGarud(to, from, next);
+        }
+    },
+    {
+        path:'/Search',
+        name:'SearchP',
+        component:SearchP
     }
 ]
 
