@@ -7,7 +7,8 @@ import UserProfile from "./components/UserProfile/UserProfile.vue"
 import SearchP from "./components/Search/SearchP.vue"
 import AuthGarud from './Garuds/AuthGarud';
 import LoginRegGarud from './Garuds/LoginRegGarud';
-// import AdminGard from './Garuds/AdminGard';
+import AdminGard from './Garuds/AdminGard';
+import Admin from './components/Admin/Admin.vue';
 const routes = [{
         path:'/',
         name:'Main',
@@ -43,6 +44,14 @@ const routes = [{
         path:'/Search',
         name:'SearchP',
         component:SearchP
+    },
+    {
+        path:'/Admin',
+        name:'Admin',
+        component:Admin,
+        beforeEnter:(to, from, next) => {
+            AdminGard(to, from, next);
+        }
     }
 ]
 

@@ -6,6 +6,7 @@ import Categories from './modules/Categories'
 import Cart from './modules/Cart'
 import Authentication from './modules/Authentication'
 import UserMovement from './modules/UserMovement'
+import Users from './modules/Users'
 // load vuex
 createApp(App).use(Vuex)
 
@@ -17,6 +18,7 @@ export default new Vuex.Store({
         Categories,
         Cart,
         UserMovement,
-        Authentication
+        Authentication,
+        Users
     }
 })

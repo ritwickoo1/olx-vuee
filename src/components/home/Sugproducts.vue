@@ -55,8 +55,8 @@
          let selected = shuffled.slice(0, 5);
          this.BigData = selected;
          this.isLoad  = true;
-         console.log('data x', this.BigData)
-       }, 5000)
+        //  console.log('data x', this.BigData)
+       }, 500)
       },
     //   filters:{
     //     capitalize:(value) =>{
