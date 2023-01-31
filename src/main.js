@@ -5,4 +5,4 @@ import chart from 'chart.js';
 import chartkick from 'vue-chartkick';
 // Store
 import store from './Store/index'
-Vue.createApp(App).use(store).use(router).mount('#app');
+Vue.createApp(App).use(chartkick.use(chart)).use(store).use(router).mount('#app');

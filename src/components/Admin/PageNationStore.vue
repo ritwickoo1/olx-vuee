@@ -44,7 +44,7 @@ export default {
     },
     props: ['ComponentName'],
     computed: {
-        ...mapGetters(['AllUsers', 'allCategories', 'AllProducs']),
+        ...mapGetters(['AllUsers', 'allCategories', 'AllProducts']),
     },
     mounted() {
         if (!this.$route.query.page) {
@@ -79,7 +79,7 @@ export default {
             }
             if (this.ComponentName == 'ProductComponent') {
                 this.GetProdByPageNumber(page);
-                let newd = this.AllProducs;
+                let newd = this.AllProducts;
                 this.$emit('new-ProductsData', newd, page)
             }
             this.PageSelected = page;
