@@ -50,7 +50,8 @@
                   'GetCategories',
                   'CheckIfInCart',
                   'SetNewCartItem',
-                  'RemoveItemFromCart'
+                  'RemoveItemFromCart',
+                  'SetUserMovemnetItem'
                 ]),
                 async Getroutedata(){
                     this.isLoad = false;
@@ -75,6 +76,7 @@
                         console.log('res X',res);
                         this.isLoad = true;
                     }) 
+                    this.SetUserMovemnetItem(ProdID);
                 },
                 async ChangeItemStatus(){
                     this.isLoad = false;

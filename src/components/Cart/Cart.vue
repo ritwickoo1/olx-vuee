@@ -119,7 +119,8 @@ import { mapActions, mapGetters } from 'vuex';
                 ...mapActions([
                     'ChangeItemQuantity',
                     'RemoveItemFromCart',
-                    'GetProdByID'
+                    'GetProdByID',
+                    'SetUserMovemnetCart'
                 ]),
                 GetProductsONCard:function(){
                     //this.items = this.AllCatItems;
@@ -172,6 +173,7 @@ import { mapActions, mapGetters } from 'vuex';
                     let newArr = this.items.filter(x=>{return x.id != Id})
                     this.items = newArr;
                     this.RemoveItemFromCart(Id);
+                    this.AddToUserMovements();
                 },
                 TotalPrice:function(){
                     const TheArrData = []
@@ -184,6 +186,10 @@ import { mapActions, mapGetters } from 'vuex';
                         return a+b;
                     },0)
                     this.TotalItemPrice = lastNumber;
+                    this.AddToUserMovements();
+                },
+                AddToUserMovements:function(){
+                    this.SetUserMovemnetCart(obj);
                 }
             },
             watch:{
